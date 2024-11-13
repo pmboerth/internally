@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   postgres:
     image: postgres:latest
@@ -10,6 +8,7 @@ services:
     ports:
       - "5432:5432"
     volumes:
+      - ./db.sql:/docker-entrypoint-initdb.d/db.sql
       - postgres_data:/var/lib/postgresql/data
 
   pgadmin:
@@ -18,7 +17,7 @@ services:
       PGADMIN_DEFAULT_EMAIL: admin@admin.com
       PGADMIN_DEFAULT_PASSWORD: admin
     ports:
-      - "8081:80"
+      - "8080:80"
     depends_on:
       - postgres
 
