@@ -1,4 +1,4 @@
-package com.internally.backend.advice;
+package com.internally.backend.advices;
 
 import com.internally.backend.exceptions.CompanyNotFoundException;
 import org.springframework.http.HttpStatus;
