@@ -1,16 +1,13 @@
 package com.internally.backend.controllers;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.internally.backend.models.User;
 import com.internally.backend.repositories.UserRepository;
 import com.internally.backend.exceptions.UserNotFoundException;
 
 @RestController
+@RequestMapping("/users")
 public class UserController {
 
     private final UserRepository repository;
@@ -20,12 +17,12 @@ public class UserController {
     }
 
 
-    @PostMapping("/users")
-    User postUser(@RequestBody User u) {
-        return this.repository.save(u);
+    @PostMapping
+    User postUser(@RequestBody User user) {
+        return this.repository.save(user);
     }
 
-    @GetMapping("/users/{id}")
+    @GetMapping("/{id}")
     User getUser(@PathVariable Long id) {
         return repository.findById(id)
             .orElseThrow(() -> new UserNotFoundException(id));
