@@ -29,7 +29,7 @@ public class Company {
             name = "company_locations",
             joinColumns = @JoinColumn(name = "company_id"),
             inverseJoinColumns = @JoinColumn(name = "location_id"))
-    private Set<Location> companyLocations = new HashSet<>();
+    private Set<Location> locations = new HashSet<>();
 
     protected Company() {
     }
@@ -41,12 +41,12 @@ public class Company {
     }
 
     public void addLocation(Location location) {
-        this.companyLocations.add(location);
+        this.locations.add(location);
         location.getCompanies().add(this);
     }
 
     public void removeLocation(Location location) {
-        this.companyLocations.remove(location);
+        this.locations.remove(location);
         location.getCompanies().remove(this);
     }
 
