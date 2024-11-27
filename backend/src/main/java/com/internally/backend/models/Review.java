@@ -2,7 +2,6 @@ package com.internally.backend.models;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
