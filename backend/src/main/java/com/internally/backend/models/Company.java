@@ -3,9 +3,7 @@ package com.internally.backend.models;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "companies")
@@ -24,30 +22,12 @@ public class Company {
     @OneToMany(mappedBy = "company", cascade = CascadeType.ALL)
     private List<Review> reviews = new ArrayList<>();
 
-    @ManyToMany
-    @JoinTable(
-            name = "company_locations",
-            joinColumns = @JoinColumn(name = "company_id"),
-            inverseJoinColumns = @JoinColumn(name = "location_id"))
-    private Set<Location> companyLocations = new HashSet<>();
-
-    protected Company() {
-    }
+    protected Company() {}
 
     public Company(String name, String industry, String website) {
         this.name = name;
         this.industry = industry;
         this.website = website;
-    }
-
-    public void addLocation(Location location) {
-        this.companyLocations.add(location);
-        location.getCompanies().add(this);
-    }
-
-    public void removeLocation(Location location) {
-        this.companyLocations.remove(location);
-        location.getCompanies().remove(this);
     }
 
     public long getId() {
