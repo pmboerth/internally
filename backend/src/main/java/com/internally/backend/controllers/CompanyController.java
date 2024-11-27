@@ -6,8 +6,6 @@ import com.internally.backend.models.Company;
 import com.internally.backend.repositories.CompanyRepository;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
-
 @RestController
 @RequestMapping("/companies")
 public class CompanyController {
