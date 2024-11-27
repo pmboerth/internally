@@ -24,13 +24,6 @@ public class Company {
     @OneToMany(mappedBy = "company", cascade = CascadeType.ALL)
     private List<Review> reviews = new ArrayList<>();
 
-    @ManyToMany
-    @JoinTable(
-            name = "company_locations",
-            joinColumns = @JoinColumn(name = "company_id"),
-            inverseJoinColumns = @JoinColumn(name = "location_id"))
-    private Set<Location> companyLocations = new HashSet<>();
-
     protected Company() {
     }
 
@@ -38,16 +31,6 @@ public class Company {
         this.name = name;
         this.industry = industry;
         this.website = website;
-    }
-
-    public void addLocation(Location location) {
-        this.companyLocations.add(location);
-        location.getCompanies().add(this);
-    }
-
-    public void removeLocation(Location location) {
-        this.companyLocations.remove(location);
-        location.getCompanies().remove(this);
     }
 
     public long getId() {
