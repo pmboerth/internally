@@ -2,7 +2,6 @@ package com.internally.backend.models;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -42,6 +41,16 @@ public class Review {
     @ManyToOne
     @JoinColumn(name = "company_id")
     private Company company;
+
+    protected Review() { }
+
+    public Review (int rating, double pay, String content, User user, Company company) {
+        this.rating = rating;
+        this.pay = pay;
+        this.content = content;
+        this.user = user;
+        this.company = company;
+    }
 
     public long getId() {
         return this.id;

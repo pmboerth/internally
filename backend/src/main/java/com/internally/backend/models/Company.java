@@ -3,7 +3,9 @@ package com.internally.backend.models;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "companies")
@@ -22,7 +24,8 @@ public class Company {
     @OneToMany(mappedBy = "company", cascade = CascadeType.ALL)
     private List<Review> reviews = new ArrayList<>();
 
-    protected Company() {}
+    protected Company() {
+    }
 
     public Company(String name, String industry, String website) {
         this.name = name;
